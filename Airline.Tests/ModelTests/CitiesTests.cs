@@ -58,12 +58,15 @@ namespace Airline.Tests
       CollectionAssert.AreEqual(newList, result);
     }
 
-    // [TestMethod]
-    // public void Find_ReturnsCorrectCityFromDatabase_City()
-    // {
-    //   City newCity = new City("test");
-    //
-    // }
+    [TestMethod]
+    public void Find_ReturnsCorrectCityFromDatabase_City()
+    {
+      City newCity = new City("test");
+      newCity.Save();
+      City foundCity = City.Find(newCity.GetId());
+      Assert.AreEqual(newCity, foundCity);
+
+    }
 
     [TestMethod]
     public void Save_SavesToDatabase_CityList()
