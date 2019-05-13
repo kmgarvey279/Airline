@@ -22,16 +22,16 @@ namespace Airline.Models
       return _code;
     }
 
-    public string GetCode()
+    public string GetCity()
     {
-      return _code;
+      return _city;
     }
 
 
-        public string GetCode()
-        {
-          return _code;
-      }
+    public int GetId()
+    {
+      return _id;
+    }
   }
 
 }
