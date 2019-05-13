@@ -86,12 +86,61 @@ namespace Airline.Tests
       Console.WriteLine(testList.Count);
       CollectionAssert.AreEqual(testList, result);
     }
+
+    [TestMethod]
+    public void Save_AssignsIdToObject_Id()
+    {
+      Flight testFlight = new Flight("test", 1);
+      testFlight.Save();
+      Flight savedFlight = Flight.GetAll()[0];
+      int result = savedFlight.GetId();
+      int testId = testFlight.GetId();
+      Assert.AreEqual(testId, result);
+    }
+
     [TestMethod]
     public void Equals_ReturnsTrueIfNamesAreTheSame_City()
     {
       Flight flight1 = new Flight("", 1, 1);
       Flight flight2 = new Flight("", 1, 1);
       Assert.AreEqual(flight1, flight2);
+    }
+
+    [TestMethod]
+    public void Find_ReturnsCorrectFlightsFromDatabase_Flight()
+    {
+      Flight testFlight = new Flight("test", 1);
+      testFlight.Save();
+      Flight foundFlight = Flight.Find(testFlight.GetId());
+      Assert.AreEqual(testFlight, foundFlight);
+    }
+
+    [TestMethod]
+    public void AddCity_AddsCityToFlight_FlightList()
+    {
+      Flight testFlight = new Flight("test", 1);
+      testFlight.Save();
+      City testCity = new City("test");
+      testCity.Save();
+      testFlight.AddCity(testCity);
+      List<City> result = testFlight.GetCities();
+      List<City> testList = new List<City>{testCity};
+      CollectionAssert.AreEqual(testList, result);
+    }
+
+    [TestMethod]
+    public void GetCities_ReturnsAllCityFlights_FlightList()
+    {
+      Flight testFlight = new Flight("test", 1);
+      testFlight.Save();
+      City testCity1 = new City ("test1");
+      testCity1.Save();
+      City testCity2 = new City ("test2");
+      testCity2.Save();
+      testFlight.AddCity(testCity1);
+      List<City> result = testFlight.GetCities();
+      List<City> testList = new List<City>{testCity1};
+      CollectionAssert.AreEqual(testList, result);
     }
   }
 }
