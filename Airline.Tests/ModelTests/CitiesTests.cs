@@ -10,7 +10,7 @@ namespace Airline.Tests
   {
     public void Dispose()
     {
-      // City.ClearAll()
+      City.ClearAll();
     }
 
     public CityTest()
@@ -54,8 +54,33 @@ namespace Airline.Tests
     {
       List<City> newList = new List<City> { };
       City newCity = new City("test");
-      List<City> result = newCity.GetAll();
+      List<City> result = City.GetAll();
       CollectionAssert.AreEqual(newList, result);
+    }
+
+    // [TestMethod]
+    // public void Find_ReturnsCorrectCityFromDatabase_City()
+    // {
+    //   City newCity = new City("test");
+    //
+    // }
+
+    [TestMethod]
+    public void Save_SavesToDatabase_CityList()
+    {
+      City newCity = new City("test");
+      newCity.Save();
+      List<City> result = City.GetAll();
+      List<City> testList = new List<City>{newCity};
+      CollectionAssert.AreEqual(testList, result);
+    }
+
+    [TestMethod]
+    public void Equals_ReturnsTrueIfNamesAreTheSame_City()
+    {
+      City firstCity = new City("name");
+      City secondCity = new City("name");
+      Assert.AreEqual(firstCity, secondCity);
     }
   }
 }
