@@ -12,3 +12,17 @@
 /Users/Guest/Desktop/Airline.Solution/Airline/obj/Debug/netcoreapp2.2/Airline.RazorTargetAssemblyInfo.cache
 /Users/Guest/Desktop/Airline.Solution/Airline/obj/Debug/netcoreapp2.2/Airline.dll
 /Users/Guest/Desktop/Airline.Solution/Airline/obj/Debug/netcoreapp2.2/Airline.pdb
+C:\Users\Kevin\Desktop\Airline\Airline\bin\Debug\netcoreapp2.2\Airline.deps.json
+C:\Users\Kevin\Desktop\Airline\Airline\bin\Debug\netcoreapp2.2\Airline.runtimeconfig.json
+C:\Users\Kevin\Desktop\Airline\Airline\bin\Debug\netcoreapp2.2\Airline.runtimeconfig.dev.json
+C:\Users\Kevin\Desktop\Airline\Airline\bin\Debug\netcoreapp2.2\Airline.dll
+C:\Users\Kevin\Desktop\Airline\Airline\bin\Debug\netcoreapp2.2\Airline.pdb
+C:\Users\Kevin\Desktop\Airline\Airline\obj\Debug\netcoreapp2.2\Airline.csprojAssemblyReference.cache
+C:\Users\Kevin\Desktop\Airline\Airline\obj\Debug\netcoreapp2.2\Airline.csproj.CoreCompileInputs.cache
+C:\Users\Kevin\Desktop\Airline\Airline\obj\Debug\netcoreapp2.2\Airline.RazorAssemblyInfo.cache
+C:\Users\Kevin\Desktop\Airline\Airline\obj\Debug\netcoreapp2.2\Airline.RazorAssemblyInfo.cs
+C:\Users\Kevin\Desktop\Airline\Airline\obj\Debug\netcoreapp2.2\Airline.AssemblyInfoInputs.cache
+C:\Users\Kevin\Desktop\Airline\Airline\obj\Debug\netcoreapp2.2\Airline.AssemblyInfo.cs
+C:\Users\Kevin\Desktop\Airline\Airline\obj\Debug\netcoreapp2.2\Airline.RazorTargetAssemblyInfo.cache
+C:\Users\Kevin\Desktop\Airline\Airline\obj\Debug\netcoreapp2.2\Airline.dll
+C:\Users\Kevin\Desktop\Airline\Airline\obj\Debug\netcoreapp2.2\Airline.pdb

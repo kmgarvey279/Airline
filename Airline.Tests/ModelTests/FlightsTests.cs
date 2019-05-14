@@ -13,17 +13,23 @@ namespace Airline.Tests
       Flight.ClearAll();
     }
 
+    public FlightTest()
+    {
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=airline_test;";
+    }
+
+
     [TestMethod]
     public void FlightConstructor_CreatesNewFlight_Flight()
     {
-      Flight newFlight = new Flight("", 1, 0);
+      Flight newFlight = new Flight("test");
       Assert.AreEqual(typeof(Flight), newFlight.GetType());
     }
     [TestMethod]
     public void GetCode_ReturnsFlightCode_String()
     {
       string code = "ABC";
-      Flight newFlight = new Flight(code, 1, 0);
+      Flight newFlight = new Flight(code);
       string result = newFlight.GetCode();
       Assert.AreEqual(code, result);
     }
@@ -31,37 +37,11 @@ namespace Airline.Tests
     public void SetCode_ChangesFlightCode_True()
     {
       string code = "ABC";
-      Flight newFlight = new Flight(code, 1, 0);
+      Flight newFlight = new Flight(code);
       string newCode = "EFG";
       newFlight.SetCode(newCode);
       string result = newFlight.GetCode();
       Assert.AreEqual(newCode, result);
-    }
-    [TestMethod]
-    public void GetCity_ReturnsFlightCity_String()
-    {
-      int city = 1;
-      Flight newFlight = new Flight("", city, 0);
-      int result = newFlight.GetCity();
-      Assert.AreEqual(city, result);
-    }
-    [TestMethod]
-    public void SetCity_ChangesFlightCity_True()
-    {
-      Flight newFlight = new Flight("", 1, 0);
-      int newCity = 1;
-      newFlight.SetCity(newCity);
-      int result = newFlight.GetCity();
-      Assert.AreEqual(newCity, result);
-    }
-
-    [TestMethod]
-    public void GetId_ReturnsFlightId_Int()
-    {
-      int id = 1;
-      Flight newFlight = new Flight("test", 1, id);
-      int result = newFlight.GetId();
-      Assert.AreEqual(id, result);
     }
 
     [TestMethod]
@@ -78,7 +58,7 @@ namespace Airline.Tests
     [TestMethod]
     public void Save_SavesToDatabase_FlightList()
     {
-      Flight newFlight = new Flight("", 1, 1);
+      Flight newFlight = new Flight("test");
       newFlight.Save();
       List<Flight> result = Flight.GetAll();
       Console.WriteLine(result.Count);
@@ -90,7 +70,7 @@ namespace Airline.Tests
     [TestMethod]
     public void Save_AssignsIdToObject_Id()
     {
-      Flight testFlight = new Flight("test", 1);
+      Flight testFlight = new Flight("test");
       testFlight.Save();
       Flight savedFlight = Flight.GetAll()[0];
       int result = savedFlight.GetId();
@@ -101,15 +81,15 @@ namespace Airline.Tests
     [TestMethod]
     public void Equals_ReturnsTrueIfNamesAreTheSame_City()
     {
-      Flight flight1 = new Flight("", 1, 1);
-      Flight flight2 = new Flight("", 1, 1);
+      Flight flight1 = new Flight("test");
+      Flight flight2 = new Flight("test");
       Assert.AreEqual(flight1, flight2);
     }
 
     [TestMethod]
     public void Find_ReturnsCorrectFlightsFromDatabase_Flight()
     {
-      Flight testFlight = new Flight("test", 1);
+      Flight testFlight = new Flight("test");
       testFlight.Save();
       Flight foundFlight = Flight.Find(testFlight.GetId());
       Assert.AreEqual(testFlight, foundFlight);
@@ -118,7 +98,7 @@ namespace Airline.Tests
     [TestMethod]
     public void AddCity_AddsCityToFlight_FlightList()
     {
-      Flight testFlight = new Flight("test", 1);
+      Flight testFlight = new Flight("test");
       testFlight.Save();
       City testCity = new City("test");
       testCity.Save();
@@ -131,7 +111,7 @@ namespace Airline.Tests
     [TestMethod]
     public void GetCities_ReturnsAllCityFlights_FlightList()
     {
-      Flight testFlight = new Flight("test", 1);
+      Flight testFlight = new Flight("test");
       testFlight.Save();
       City testCity1 = new City ("test1");
       testCity1.Save();

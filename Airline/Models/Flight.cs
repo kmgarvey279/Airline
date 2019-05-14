@@ -7,13 +7,11 @@ namespace Airline.Models
   public class Flight
   {
     private string _code;
-    private int _city;
     private int _id;
 
-    public Flight(string code, int city, int id = 0)
+    public Flight(string code, int id = 0)
     {
       _code = code;
-      _city = city;
       _id = id;
     }
 
@@ -25,15 +23,6 @@ namespace Airline.Models
     public void SetCode(string newCode)
     {
       _code = newCode;
-    }
-
-    public int GetCity()
-    {
-      return _city;
-    }
-    public void SetCity(int newCity)
-    {
-      _city = newCity;
     }
 
     public int GetId()
@@ -53,8 +42,7 @@ namespace Airline.Models
       {
         int flightId = rdr.GetInt32(0);
         string flightCode = rdr.GetString(1);
-        int flightCity = rdr.GetInt32(2);
-        Flight newFlight = new Flight (flightCode, flightCity, flightId);
+        Flight newFlight = new Flight (flightCode, flightId);
         allFlights.Add(newFlight);
       }
       conn.Close();
@@ -70,15 +58,11 @@ namespace Airline.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO flights (code, city) VALUES (@code, @city);";
+      cmd.CommandText = @"INSERT INTO flights (code) VALUES (@code);";
       MySqlParameter code = new MySqlParameter();
       code.ParameterName = "@code";
       code.Value = this._code;
       cmd.Parameters.Add(code);
-      MySqlParameter city = new MySqlParameter();
-      city.ParameterName = "@city";
-      city.Value = this._city;
-      cmd.Parameters.Add(city);
       cmd.ExecuteNonQuery();
       _id = (int) cmd.LastInsertedId;
       conn.Close();
@@ -112,9 +96,8 @@ namespace Airline.Models
       {
         Flight newFlight = (Flight) otherFlight;
         bool codeEquality = this.GetCode() == newFlight.GetCode();
-        bool cityEquality = this.GetCity() == newFlight.GetCity();
         bool idEquality = this.GetId() == newFlight.GetId();
-        return (codeEquality && cityEquality && idEquality);
+        return (codeEquality && idEquality);
       }
     }
 
@@ -131,14 +114,12 @@ namespace Airline.Models
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
       int flightId = 0;
       string flightCode = "";
-      int flightCity = 0;
       while(rdr.Read())
       {
         flightId = rdr.GetInt32(0);
         flightCode = rdr.GetString(1);
-        flightCity = rdr.GetInt32(2);
       }
-      Flight newFlight = new Flight(flightCode, flightCity, flightId);
+      Flight newFlight = new Flight(flightCode, flightId);
       conn.Close();
       if (conn != null)
       {

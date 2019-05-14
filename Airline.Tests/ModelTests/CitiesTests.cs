@@ -43,13 +43,6 @@ namespace Airline.Tests
     }
 
     [TestMethod]
-    public void GetId_ReturnsCityId_Int()
-    {
-    City newCity = new City("test");
-    Assert.AreEqual(newCity.GetId(), 0);
-    }
-
-    [TestMethod]
     public void GetAll_ReturnsEmptyCityList_CityList()
     {
       List<City> newList = new List<City> { };
@@ -72,7 +65,7 @@ namespace Airline.Tests
     {
       City testCity = new City("test");
       testCity.Save();
-      Flight testFlight = new Flight("test", 1);
+      Flight testFlight = new Flight("test");
       testFlight.Save();
       testCity.AddFlight(testFlight);
       List<Flight> result = testCity.GetFlights();
@@ -87,9 +80,9 @@ namespace Airline.Tests
     {
       City testCity = new City("test");
       testCity.Save();
-      Flight testFlight1 = new Flight ("test", 1);
+      Flight testFlight1 = new Flight ("test1");
       testFlight1.Save();
-      Flight testFlight2 = new Flight ("test", 2);
+      Flight testFlight2 = new Flight ("test2");
       testFlight2.Save();
       testCity.AddFlight(testFlight1);
       List<Flight> result = testCity.GetFlights();
